@@ -1,0 +1,11 @@
+.heading {
+  font-size: 42px;
+  color: #000;
+  font-weight: 700;
+  text-align: center;
+}
+.heading-border {
+  width: 100%;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #dee2e6;
+}
