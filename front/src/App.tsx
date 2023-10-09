@@ -1,8 +1,10 @@
 import React, { createContext, useReducer, useContext } from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import WellcomePage from "./container/wellcomepage";
+import SignupPage from "./container/signup";
+
 import Page from "./page/page";
 import Grid from "./page/grid";
 
@@ -12,10 +14,6 @@ type ContextType = {
   token: string | null;
   user: any;
 };
-// type User = {
-//   id: number;
-//   name: string;
-// }
 
 type AuthAction =
   | {
@@ -37,7 +35,7 @@ const initialAuthState: ContextType = {
   user: null,
 };
 
-//Редуктор для оброки дій
+// Редуктор для оброки дій
 function authReducer(state: ContextType, action: AuthAction): ContextType {
   switch (action.type) {
     case "LOGIN":
@@ -61,8 +59,7 @@ function authReducer(state: ContextType, action: AuthAction): ContextType {
   }
 }
 
-//Компонент-постачальник для контекста даних аутентифікації
-function AuthProvider({ children }: { children: React.ReactNode }) {
+function App() {
   const [authState, dispatch] = useReducer(authReducer, initialAuthState);
 
   //Функія для входу в аккаунт
@@ -74,48 +71,16 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = () => {
     dispatch({ type: "LOGOUT" });
   };
+  const authContextData = { ...authState, login, logout };
 
-  //обʼєкт контексту, в якому є стан та дії
-  return { state: authState, login, logout };
-}
-
-const authContextData = AuthProvider;
-
-//============
-
-// //Типи для даних аутентифікації
-// type ContextType = {
-//   isLogged: boolean;
-//   user: (status: boolean) => void;
-// };
-
-// //Створення контекста для даних аутентифікації
-// const AuthContext = createContext<ContextType | null>(null);
-
-// const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({
-//   children,
-// }) => {
-//   const auth = useContext(AuthContext);
-//   console.log(auth);
-
-//   if (!auth) return <div>Error</div>;
-//   return auth.isLogged ? <>{children}</> : <Navigate to="/" />;
-// };
-
-//=====
-
-function App() {
   return (
     <AuthContext.Provider value={authContextData}>
-      <Page>
-        <Grid>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<WellcomePage />} />
-            </Routes>
-          </BrowserRouter>
-        </Grid>
-      </Page>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<WellcomePage />} />
+          <Route path="/signup" element={<SignupPage />} />
+        </Routes>
+      </BrowserRouter>
     </AuthContext.Provider>
   );
 }

@@ -1,0 +1,31 @@
+.button {
+  background-color: #775ce5;
+  border: 1px solid #775ce5;
+  width: 350px;
+  height: 56px;
+  border-radius: 12px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.button--outline {
+  border: 1px solid #775ce5;
+  height: 56px;
+  width: 350px;
+
+  border-radius: 12px;
+  font-size: 16px;
+  color: #775ce5;
+}
+.button--error {
+  background-color: #f2883d26;
+  border: none;
+  color: #f2883d;
+  font-size: 14px;
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: auto;
+}
