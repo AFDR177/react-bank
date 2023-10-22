@@ -1,25 +1,43 @@
-import React from "react";
-import "./index.css";
+import "../../style/indikator.scss";
 import "./index.scss";
 
+import React, { useContext } from "react";
+import { AuthContext } from "../../App";
 import StatusBar from "../../component/statusbar";
 import Title from "../../component/title";
-import BackPage from "../../component/backpage";
-import FormCreate from "../../component/form-create";
+import BackButton from "../../component/back-button";
+import FormField from "../../component/form-field";
+import Indikator from "../wellcomepage/img/indikator.svg";
 
-import Page from "../../page/page";
+export const Signup: React.FC = () => {
+  const auth = useContext(AuthContext);
 
-export const SignupPage: React.FC = () => {
   return (
-    <Page className="signuppage">
-      <div className="box">
+    <>
+      <div>
         <StatusBar />
-        <BackPage />
+        <BackButton />
       </div>
       <Title title="Sign Up" desctiption="Choose a registration method" />
-      <FormCreate button="Continue" />
-    </Page>
+      <FormField
+        button="Continue"
+        emailField={true}
+        passField={true}
+        textField={false}
+        text="Code"
+        question="Already have an account?"
+        link={
+          <a href="/signin" className="feild__link-signin">
+            Sign In
+          </a>
+        }
+        questionOff={true}
+        alert={true}
+        auth={auth}
+      />
+      <img src={Indikator} alt="ind" className="indikator" />
+    </>
   );
 };
 
-export default SignupPage;
+export default Signup;

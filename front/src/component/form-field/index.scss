@@ -2,25 +2,87 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
 
-.form__item {
+
+&__item {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-.field__input {
-  border: 1px solid #e9e8eb;
-  border-radius: 12px;
-  padding: 16px 20px;
-  background-color: #fff;
-  font-size: 14px;
 
-  color: #000;
-
-  transition: border-color 0.3s;
 }
-.field__label {
+
+.field{
+  
+  &__wrapper {
+    width: 100%;
+    display: grid;
+  
+  }
+
+  &__label {
+    font-size: 14px;
+    color: #000;
+  }
+
+  &__input {
+    border: 1px solid #e9e8eb;
+    border-radius: 12px;
+    padding: 16px 20px;
+    background-color: #fff;
+    font-size: 14px;
+  
+    color: #000;
+  
+    transition: border-color 0.3s;
+  
+    &--validation {
+      border: 1px solid #f62408;}
+
+      &--validation:focus {
+        border-color: red;
+      }
+  }
+
+  &__input--pass {
+    position: relative;
+  }
+
+  &__icon {
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-image: url("./svg/password-hide.svg");
+    background-size: cover;
+    position: absolute;
+    right: 16px;
+    top: 34px;
+
+
+    &--err{
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-image: url("./svg/password-hide-err.svg");
+    background-size: cover;
+    position: absolute;
+    right: 16px;
+    top: 34px;
+
+    }
+  }
+
+  &__icon[show] {
+    background-image: url("./svg/password-show.svg");
+  }
+  &__icon--err[show] {
+    background-image: url("./svg/password-show-err.svg");
+  }
+
+  
+}
+
+.have-acc {
   font-size: 14px;
   color: #000;
 }
@@ -28,34 +90,12 @@
 input::placeholder {
   color: #908e91;
 }
-/* input:focus {
-  border-color: #775ce5;
-} */
-
-.feild__have-acc {
-  font-size: 14px;
-  color: #000;
-}
-.field__wrapper {
-  width: 100%;
-  display: grid;
-
-  position: relative;
-}
-.field__icon {
-  display: block;
-  height: 20px;
-  width: 20px;
-
-  background-image: url("./svg/password-hide.svg");
-  background-size: cover;
-  position: absolute;
-  right: 16px;
-  top: calc(50% - 10px);
-}
-.field__icon[show] {
-  background-image: url("./svg/password-show.svg");
-}
 input:focus {
   border-color: #775ce5;
 }
+.text__error{
+  color: red;
+  font-size: 14px;
+}
+
+

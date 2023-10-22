@@ -1,4 +1,5 @@
-import "./index.css";
+import "./index.scss";
+import "../../style/click.scss";
 
 export default function Button({
   children,
@@ -7,7 +8,7 @@ export default function Button({
   onClick = {},
 }) {
   return (
-    <button onClick={onClick} className={className} style={style}>
+    <button onClick={onClick} className={`${className} click`} style={style}>
       {children}
     </button>
   );
