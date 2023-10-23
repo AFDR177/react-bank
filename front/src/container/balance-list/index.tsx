@@ -3,10 +3,6 @@ import "./index.scss";
 import "../../style/click.scss";
 import "../../style/indikator.scss";
 
-import { useContext } from "react";
-import { AuthContext } from "../../App";
-import { useNavigate } from "react-router-dom";
-
 import { extractDollars, extractCents } from "../../util/money";
 import { getTime } from "../../util/getTime";
 import user from "./img/user.svg";
